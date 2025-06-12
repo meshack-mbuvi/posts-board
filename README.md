@@ -69,9 +69,13 @@ types/
 
 - Filtering is case-insensitive and done server-side
 - Pagination and filters use the URL search params (`?page=2&query=test`)
-- Uses `loading.tsx` as a Suspense boundary fallback during data fetching
+- Server actions are used for fetching posts initially, while filtering and pagination are handled client-side.
+- The app supports basic filtering by keyword (e.g., filtering post titles or bodies).
+- The codebase uses TypeScript and includes types for posts and components.
 
----
+## 📌 Assumptions
+- Filtering is done entirely client-side since the API doesn’t support query parameters.
+- The project is intended for demonstration purposes and does not persist user state or support user authentication.
 
 ## 📜 License
 

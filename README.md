@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📬 Posts Board
 
-## Getting Started
+A simple and modern posts viewer built with **Next.js 15 App Router** and **TailwindCSS**, using server components and server actions. It supports searching post titles and paginated browsing.
 
-First, run the development server:
+## 🚀 Features
+
+- ✅ Fetches posts from [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts)
+- 🔍 Title search via filter form
+- 📄 Paginated list of posts (10 per page)
+- ⚙️ Built with server components and server actions
+- 🎨 Styled with TailwindCSS
+
+---
+
+## 📦 Tech Stack
+
+- **Next.js 15 (App Router)**
+- **TypeScript**
+- **TailwindCSS**
+
+---
+
+## 🧑‍💻 Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/meshack-mbuvi/posts-board.git
+cd posts-board
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧰 Project Structure
 
-## Learn More
+```
+app/
+  ├── page.tsx            // Main UI page with server-side fetching
+  ├── loading.tsx         // Loading indicator (suspense fallback)
+components/
+  ├── FilterForm.tsx      // Form for searching post titles
+  ├── PostTable.tsx       // Table displaying paginated posts
+  ├── Pagination.tsx      // Navigation for pagination
+lib/
+  └── getFilteredPosts.ts          // Server action for fetching and filtering posts
+types/
+  └── post.ts             // Post interface/type definition
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Filtering is case-insensitive and done server-side
+- Pagination and filters use the URL search params (`?page=2&query=test`)
+- Uses `loading.tsx` as a Suspense boundary fallback during data fetching
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📜 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT — feel free to use and modify.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🤝 Acknowledgements
+
+Powered by [Next.js](https://nextjs.org/), [TailwindCSS](https://tailwindcss.com/), and [JSONPlaceholder](https://jsonplaceholder.typicode.com/).

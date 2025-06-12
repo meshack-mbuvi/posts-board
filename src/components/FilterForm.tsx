@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   initialQuery: string;
@@ -12,22 +12,39 @@ export default function FilterForm({ initialQuery }: Props) {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(initialQuery);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const updateURL = (value: string) => {
     const params = new URLSearchParams(searchParams);
-    if (query) {
-      params.set("query", query);
+    if (value) {
+      params.set("query", value);
     } else {
       params.delete("query");
     }
-    params.set("page", "1"); // Reset page when searching
+    params.set("page", "1");
     router.push(`/?${params.toString()}`);
+  };
+
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      updateURL(query);
+    }, 500);
+
+    return () => clearTimeout(debounceTimeout);
+  }, [query]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    updateURL(query);
+  };
+
+  const handleClear = () => {
+    setQuery("");
+    updateURL("");
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex justify-center w-full space-x-2 items-center gap-2">
+      className="flex justify-center w-full flex-wrap gap-2 items-center">
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -36,9 +53,17 @@ export default function FilterForm({ initialQuery }: Props) {
       />
       <button
         type="submit"
-        className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-medium rounded-md px-4 py-2 transition">
+        className="bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md px-4 py-2 transition">
         Search
       </button>
+      {query && (
+        <button
+          type="button"
+          onClick={handleClear}
+          className="bg-gray-300 cursor-pointer hover:bg-gray-400 text-gray-800 font-medium rounded-md px-4 py-2 transition">
+          Clear
+        </button>
+      )}
     </form>
   );
 }

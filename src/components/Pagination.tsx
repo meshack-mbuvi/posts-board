@@ -37,10 +37,10 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages }) => {
 
       <button
         onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages || totalPages === 0}
         className={`px-4 py-2 rounded-md border text-sm font-medium transition 
           ${
-            currentPage === totalPages
+            currentPage === totalPages || totalPages === 0
               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
               : "bg-white cursor-pointer text-gray-700 hover:bg-gray-100 border-gray-300"
           }`}>

@@ -3,23 +3,16 @@ import Pagination from "@/components/Pagination";
 import PostTable from "@/components/PostTable";
 import { getFilteredPosts } from "@/lib/getFilteredPosts";
 
-interface PageProps {
-  searchParams?: {
-    page?: string;
-    query?: string;
-  };
-}
-
 const POSTS_PER_PAGE = 10;
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: {
+export default async function Home(props: {
+  searchParams: Promise<{
     page?: string;
     query?: string;
-  };
+  }>;
 }) {
+  const searchParams = await props.searchParams;
+
   const page = parseInt(searchParams?.page || "1");
   const query = searchParams?.query || "";
 

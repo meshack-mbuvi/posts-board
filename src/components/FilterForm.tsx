@@ -49,7 +49,7 @@ export default function FilterForm({ initialQuery }: Props) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search posts"
-        className="input p-2 border border-gray-400 rounded-md input-bordered w-full max-w-xs"
+        className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
       />
       <button
         type="submit"

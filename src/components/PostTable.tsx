@@ -5,8 +5,6 @@ import React from "react";
 
 interface Props {
   posts: Post[];
-  currentPage: number;
-  pageSize: number;
 }
 
 const PostTable: React.FC<Props> = ({ posts }) => {
@@ -14,16 +12,10 @@ const PostTable: React.FC<Props> = ({ posts }) => {
     <div className="overflow-x-auto w-full rounded-lg shadow-md border border-gray-200">
       <table className="min-w-full divide-y divide-gray-200 text-sm">
         <thead className="bg-gray-100">
-          <tr>
-            <th className="px-4 py-3 text-left font-semibold text-gray-700">
-              ID
-            </th>
-            <th className="px-4 py-3  text-left font-semibold text-gray-700">
-              Title
-            </th>
-            <th className="px-4 py-3 text-left font-semibold text-gray-700">
-              Body
-            </th>
+          <tr className="font-semibold text-gray-700">
+            <th className="px-4 py-3 text-left">ID</th>
+            <th className="px-4 py-3 text-left">Title</th>
+            <th className="px-4 py-3 text-left">Body</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">

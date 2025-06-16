@@ -28,7 +28,7 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages }) => {
               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
               : "bg-white text-gray-700 cursor-pointer hover:bg-gray-100 border-gray-300"
           }`}>
-        Previous
+        Prev
       </button>
 
       <span className="self-center text-sm font-medium text-gray-600">

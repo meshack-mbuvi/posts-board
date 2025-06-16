@@ -23,18 +23,14 @@ export default async function Home(props: {
   const currentPosts = allPosts.slice(start, start + POSTS_PER_PAGE);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen mt-4 p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-4xl font-semibold text-center text-indigo-600 underline decoration-indigo-400 tracking-tight mb-6">
+    <div className="flex flex-col items-center justify-items-center min-h-screen mt-4 p-8 pb-20 sm:p-20">
+      <h1 className="text-4xl font-semibold text-center text-indigo-500 underline decoration-indigo-400 tracking-tight mb-6">
         Explore Posts with Filters & Pagination
       </h1>
 
       <main className="flex flex-col gap-6 row-start-2 items-center sm:items-start">
         <FilterForm initialQuery={query} />
-        <PostTable
-          posts={currentPosts}
-          currentPage={page}
-          pageSize={POSTS_PER_PAGE}
-        />
+        <PostTable posts={currentPosts} />
         <Pagination currentPage={page} totalPages={totalPages} />
       </main>
     </div>
